@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PokemonCard from './components/PokemonCard';
 import NavBar from './components/NavBar';
 
@@ -30,6 +30,16 @@ const pokemonList = [
 
 const App = () => {
   const [pokemonIndex, setPokemonIndex] = useState(0);
+
+  useEffect(() => {
+    alert('Hello mon ptit dresseur ! :)');
+  }, []);
+
+  useEffect(() => {
+    if (pokemonList[pokemonIndex].name === 'pikachu') {
+      alert('pika pikachu !!!');
+    }
+  }, [pokemonIndex]);
 
   const handlePrevious = () => {
     if (pokemonIndex > 0) {
