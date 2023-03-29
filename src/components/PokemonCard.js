@@ -1,13 +1,19 @@
 import React from 'react';
 
-const PokemonCard = () => {
+const PokemonCard = (props) => {
+  const { pokemon } = props;
+
   return (
     <figure>
-      <img
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-        alt="Bulbasaur"
-      />
-      <figcaption>Bulbasaur</figcaption>
+      {pokemon.imgSrc ? (
+        <img
+          src={pokemon.imgSrc}
+          alt={pokemon.name}
+        />
+      ) : (
+        <p>???</p>
+      )}
+      <figcaption>{pokemon.name}</figcaption>
     </figure>
   );
 };
