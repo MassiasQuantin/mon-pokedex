@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PokemonCard from './components/PokemonCard';
 import NavBar from './components/NavBar';
 
@@ -31,33 +31,11 @@ const pokemonList = [
 const App = () => {
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
-  useEffect(() => {
-    alert('Hello mon ptit dresseur ! :)');
-  }, []);
-
-  useEffect(() => {
-    if (pokemonList[pokemonIndex].name === 'pikachu') {
-      alert('pika pikachu !!!');
-    }
-  }, [pokemonIndex]);
-
-  const handlePrevious = () => {
-    if (pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setPokemonIndex(pokemonIndex + 1);
-    }
-  };
-
   return (
     <div>
       <NavBar
-        onPrevious={pokemonIndex > 0 ? handlePrevious : null}
-        onNext={pokemonIndex < pokemonList.length - 1 ? handleNext : null}
+        pokemonList={pokemonList}
+        onButtonClick={setPokemonIndex}
       />
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
     </div>
